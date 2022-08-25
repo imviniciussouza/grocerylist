@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href='https://css.gg/trash.css' rel='stylesheet'>
+    <title>Lista de mercado</title>
+    <style>
+      *{
+        box-sizing: border-box;
+      }
+      body{
+        margin: 0;
+        padding: 0;
+      }
+      .container{
+        max-width: 360px;
+        margin-top: 40px;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        flex-direction: column;
+        
+        box-shadow: 1px -1px 8px 3px #000000;
+        border-radius: 5px;
+
+      }
+      .busca{
+        margin-left: auto;
+        margin-right: auto;
+      }
+      h1{
+        text-align: center;
+        font-family: Roboto, Helvetica;
+        font-size: 28px;
+      }
+      .titulo{
+        height: 100px;
+      }
+      .titulo p{
+        text-align: center;
+        background-color: #FFC0CB;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .btnClear{
+        font-family: Roboto, Helvetica;
+        border: none;
+        background-color: #fff;
+        text-align: center;
+
+      }
+      .limpar{
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 20px
+
+      }
+      .btnClear:hover{
+        transform: scale(1.1);
+      }
+      li{
+        list-style-type: none;
+      }
+      .lista-mae{
+        display: flex;
+        justify-content: space-between;
+        width: 85%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .lista-icons {
+        margin-right: 10px;
+       
+
+      }
+      .lista-items{
+        margin-left: -20px;
+      
+      }
+
+    </style>
+
+  </head>
+  <body>
+    <div class="container">
+      <div class="titulo">
+        <h1>Lista de Compras</h1>
+        <p></p>
+      </div>
+      <div class="busca">
+        <input type="text" id="adicionador">
+        <button class="btn" onclick="checaVazio()">Adicionar</button>
+      </div>
+      <div class="lista-mae">
+        <div class="lista-items">
+          <ul>
+ 
+          </ul>
+        </div>
+        <div class="lista-icons">
+          <ul class="icons">
+
+          </ul>
+        </div> 
+      </div>
+      <div class="limpar">
+        <button class="btnClear" onclick="clearList()">Limpar lista</button>
+      </div>  
+    </div>
+    <script>
+      const input = document.getElementById("adicionador")
+      // caso o usuário aperte adicionar e o input estiver vazio
+      function checaVazio (){
+          
+          if (input.value !== "")  {
+            listAdder();
+          } else {
+            const paraAlerta = document.querySelector(".titulo").querySelector("p");
+            paraAlerta.textContent = "Digite algum produto";
+            setTimeout( clearPara =>{
+              paraAlerta.innerHTML = "";
+            },500);
+          }
+
+        }  
+
+      //
+      function listAdder(){
+        const novoItem = document.createElement("li");
+        novoItem.textContent = input.value;
+        document.querySelector("ul").appendChild(novoItem);
+        
+        const ulItems = document.querySelector(".lista-items");
+        const novoIcon = document.createElement("i");
+        const novoLi = document.createElement("li");
+        novoIcon.classList.add("gg-trash");
+        novoLi.appendChild(novoIcon);
+        document.querySelector(".icons").appendChild(novoLi);
+        input.value = '';
+        input.focus();
+        
+      }
+      document.querySelector(".btn").addEventListener("click", checaVazio);
+
+      function clearList(){
+        document.querySelector("ul").innerHTML = "";
+        document.querySelector(".icons").innerHTML = "";
+      }
+
+   
+    </script>
+  </body>
+</html>
