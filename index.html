@@ -112,12 +112,12 @@
     </div>
     <script>
       const input = document.getElementById("adicionador")
-      // caso o usuário aperte adicionar e o input estiver vazio
       function checaVazio (){
           
           if (input.value !== "")  {
             listAdder();
-          } else {
+
+          } else {           
             const paraAlerta = document.querySelector(".titulo").querySelector("p");
             paraAlerta.textContent = "Digite algum produto";
             setTimeout( clearPara =>{
@@ -141,9 +141,7 @@
         document.querySelector(".icons").appendChild(novoLi);
         input.value = '';
         input.focus();
-        
       }
-      document.querySelector(".btn").addEventListener("click", checaVazio);
 
       function clearList(){
         document.querySelector("ul").innerHTML = "";
